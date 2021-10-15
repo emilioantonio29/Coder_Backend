@@ -1,0 +1,55 @@
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1>websocket</h1>      
+            {{!-- <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p> --}}
+        </div>
+        </div>
+        <div class="container">
+            <h1 style="color: blue;">{{bienvenida}}</h1>  
+            <br><br>
+            <div class="d-flex justify-content-center">
+                <h1>Alta de productos:</h1>
+            </div>
+            <div class="container col-md-6 d-flex justify-content-center" style="border: 1px solid blue">
+                {{!-- <form class=" d-flex flex-column" method="POST" action="/"> --}}
+                <form id="formSender" class=" d-flex flex-column">
+                    <div class="form-group">
+                        <label for="email">Title:</label>
+                        <input id="title" class="form-control" type="text" name="title"  class="ml-auto" required placeholder="title"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">Price:</label>
+                        <input id="price" class="form-control" type="number" name="price" class="ml-auto" required placeholder="$"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="pwd">thumbnail:</label>
+                        <input id="thumbnail" class="form-control" type="text" name="thumbnail" class="ml-auto" required placeholder="URL de la imagen"/>
+                    </div>
+                    <button id="sendData" type="submit" class="btn btn-default" value="Agregar">Submit</button>
+                </form>
+            </div>
+        </div>
+
+<div id='productos'></div>
+
+
+
+{{!-- <div id='productos'></div> --}}
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1>chat</h1>      
+            {{!-- <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p> --}}
+        </div>
+    </div>
+
+
+    
+    <div class="container">
+        <form class="form-inline" onsubmit="return addMessage(this)" autocomplete="off">
+            <input type="text" id="username" class="form-control my-2 mr-2" placeholder="Tu Nombre">
+            <input type="text" id="texto" class="form-control my-2 mr-2" placeholder="Cuentanos Algo...">
+            <input type="submit" value="Enviar!" class="btn btn-primary my-2">
+        </form>
+        <br>
+        <div id="messages"></div>
+    </div>
