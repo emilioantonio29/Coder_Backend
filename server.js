@@ -70,6 +70,7 @@ io.on('connection', socket => { //"connection" se ejecuta la primera vez que se 
 
 })
 
+
 server.listen(7001, function() {
     console.log('Servidor corriendo en http://localhost:7001');
 })
