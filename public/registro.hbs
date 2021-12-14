@@ -1,0 +1,55 @@
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1></h1>      
+    {{!-- <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p> --}}
+    <br>
+    {{!-- <label for="db">Selecciona una base para persistir los datos - por defecto es MongoDBaaS</label>
+    <select name="db" id="dbAlta" onchange="cambioBase2()">
+        <option  value="fs" disabled>File System</option>
+        <option  value="MySQL">MySQL</option>
+        <option  value="MySQLDBaaS" disabled>MySQLDBaaS</option>
+        <option value="SQLite3">SQLite3</option>
+        <option value="MongoD" selected>MongoD</option>
+        <option value="MongoDBaaS">MongoDBaaS</option>
+        <option disabled value="Firebase">Firebase</option>
+    </select> 
+    <button onclick="dbAlta()">ConsoleLog Base Seleccionada</button> --}}
+    {{!-- <button onclick="renderMensajes()">ConsoleLog Mensajes</button> --}}
+  </div>
+</div>
+
+<div class="container">
+    <h1 style="color: blue;">{{bienvenida}}</h1>  
+    <br><br>
+    {{!-- <div class="container col-md-6 d-flex justify-content-center align-items-center" style="border: 1px solid blue">
+            <label for="user">Ingrese su nombre:</label>
+            <input id="user" class="form-control" type="text" name="user" class="ml-auto" required placeholder="Emilio"/>
+    <button onclick="login()" class="btn btn-default" value="Agregar">Login</button> --}}
+
+    <div class="card">
+        <div class="card-body">
+            <p>Registro de usuario:</p>
+            <br>
+            <form action="/registro" method="POST" role="form" autocomplete="off">
+            <label for="user">Usuario:</label>
+            <input id="user" class="form-control" type="text" name="username" class="ml-auto" required placeholder="emilio@test.com" style="background-color: rgb(196, 196, 196);"/>
+            <label for="pass">Password:</label>
+            <input id="pass" class="form-control" type="text" name="password" class="ml-auto" required placeholder="123456789" style="background-color: rgb(196, 196, 196);"/>
+            <br>
+            <input type="submit" class="btn btn-dark" value="Registrarse">
+            </form>
+        </div>
+    </div>
+
+    </div>
+</div>
+<br>
+<div class="container">
+    <a class="nav-item nav-link" href="/login">LOGIN</a>
+
+</div>
+
+<script src="indexMs.js"></script>
+{{!-- DESAFIO 10 HANDLEBARS --}}
+{{!-- LISTADO DE PRODUCTOS POR ID/ GET --}}

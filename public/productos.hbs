@@ -1,0 +1,34 @@
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1></h1>      
+    {{!-- <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p> --}}
+    <br>
+    <label for="db">Selecciona una base para persistir los datos - por defecto es MongoDBaaS</label>
+    <select name="db" id="db" onchange="cambioBase()">
+        <option value="fs" disabled>File System</option>
+        <option  value="MySQL">MySQL</option>
+        <option  value="MySQLDBaaS" disabled>MySQLDBaaS</option>
+        <option  value="SQLite3">SQLite3</option>
+        <option value="MongoD" selected>MongoD</option>
+        <option  value="MongoDBaaS">MongoDBaaS</option>
+        <option disabled  value="Firebase">Firebase</option>
+    </select> 
+    <button onclick="db()">ConsoleLog Base Seleccionada</button>
+  </div>
+</div>
+
+<div class="container">
+    <div id="lista">
+        <div id='productos'></div>
+    </div>
+    <div id="detalle">
+    </div>
+    <div id="editar">
+
+    </div>
+</div>
+
+<script src="index.js"></script>
+
+{{!-- <button onclick="test()">test</button> --}}
