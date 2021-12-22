@@ -40,8 +40,10 @@ const ls = child.exec('dir', function (error, stdout, stderr) {
   });
 
 const TWITTER_CALLBACK_PORT = process.argv[2] ? process.argv[2] : "7001"
-const TWITTER_CLIENT_KEY = process.argv[3] ? process.argv[3] : "Qq9lzsF6u67GjSSMnrLtZwWPs"
-const TWITTER_CLIENT_SECRET = process.argv[4] ? process.argv[4] : "aMSUUqnukGTFUVXMECqwDuIaa8J4At5ALBxSmKuTyFgFb4enMl"
+// const TWITTER_CLIENT_KEY = process.argv[3] ? process.argv[3] : "Qq9lzsF6u67GjSSMnrLtZwWPs"
+// const TWITTER_CLIENT_SECRET = process.argv[4] ? process.argv[4] : "aMSUUqnukGTFUVXMECqwDuIaa8J4At5ALBxSmKuTyFgFb4enMl"
+const TWITTER_CLIENT_KEY = "Qq9lzsF6u67GjSSMnrLtZwWPs"
+const TWITTER_CLIENT_SECRET = "aMSUUqnukGTFUVXMECqwDuIaa8J4At5ALBxSmKuTyFgFb4enMl"
 
 
 //console.log(TWITTER_CLIENT_KEY + TWITTER_CLIENT_SECRET)
@@ -381,7 +383,7 @@ const expire = 60000
                 return response.json();
             })
             .then(function(stories) {
-                res.json(stories)
+                res.json({Puerto: TWITTER_CALLBACK_PORT, Calculo: stories})
             })
             .catch((err)=>{
                 console.log(err)

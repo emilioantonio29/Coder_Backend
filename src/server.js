@@ -7,9 +7,11 @@ DESAFIO: 30
 
         Argumento 1 = recibe un puerto. si no se le pasa puerto setea 7001 -> process.argv[2] ? process.argv[2] : "7001"
             IMPORTANTE: el puerto debe ser igual al callback de twitter, que lo pide en la configuracion de la app
-        Argumento 2 = recibe el TWITTER_CLIENT_KEY. si no se le pasa setea XXXXX -> process.argv[3] ? process.argv[3] : "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-        Argumento 3 = recibe el TWITTER_CLIENT_SECRET. si no se le pasa setea XXXXX -> process.argv[4] ? process.argv[4] : "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-        Argumento 4 = recibe si debe iniciar en modo FORK o CLUSTER. si no se le pasa setea FORK.
+        
+        ELIMINADO:      Argumento 2 = recibe el TWITTER_CLIENT_KEY. si no se le pasa setea XXXXX -> process.argv[3] ? process.argv[3] : "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        ELIMINADO:      Argumento 3 = recibe el TWITTER_CLIENT_SECRET. si no se le pasa setea XXXXX -> process.argv[4] ? process.argv[4] : "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+        
+        Argumento 2 = recibe si debe iniciar en modo FORK o CLUSTER. si no se le pasa setea FORK.
             Si se le pasa el argumento CLUSTER, abre tantos workers como procesadores tenga la maquina
             
             LISTAR PROCESOS DE NODE EN POWERSHELL
@@ -44,6 +46,32 @@ DESAFIO: 30
     nginx -s reload
     nginx -s stop
     nginx -s quit
+
+    PARTE 1: 
+
+    Configurar Nginx para balancear cargas de nuestro servidor de la siguiente manera:
+    - Redirigir todas las consultas a /api/randoms a un cluster de servidores escuchando en el puerto 7000. El cluster será creado desde node utilizando el módulo nativo cluster.
+    - El resto de las consultas, redirigirlas a un servidor individual escuchando en el puerto 7001.
+    
+    ***********EJECUTAR LO SIGUIENTE PARA VER LOS RESULTADOS
+    forever start src/server.js 7000 CLUSTER
+    forever start src/server.js 7001
+    CORRER EL nginx_1.confi (arreglar nombre)
+
+
+    PARTE 2:
+
+    Luego, modificar la configuración para que todas las consultas a /api/randoms sean redirigidas a un 
+    cluster de servidores gestionado desde nginx, repartiéndolas equitativamente entre 4 instancias 
+    escuchando en los puertos 8082, 8083, 8084 y 8085 respectivamente.
+
+    ***********EJECUTAR LO SIGUIENTE PARA VER LOS RESULTADOS
+    forever start src/server.js 7001
+    forever start src/server.js 8082
+    forever start src/server.js 8083
+    forever start src/server.js 8084
+    forever start src/server.js 8085
+    CORRER EL nginx_2.confi (arreglar nombre)
 */
 
 
@@ -64,7 +92,7 @@ import cluster from 'cluster';
 import opsi from 'os';
 const numCPU = opsi.cpus().length;
 
-const ServeMode = process.argv[5] ? process.argv[5] : "FORK"
+const ServeMode = process.argv[3] ? process.argv[3] : "FORK"
 
 if(ServeMode === "CLUSTER"){
     
