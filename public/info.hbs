@@ -1,0 +1,43 @@
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1>Server Info</h1>      
+    {{!-- <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p> --}}
+    <br>
+    {{!-- <label for="db">Selecciona una base para persistir los datos - por defecto es MongoDBaaS</label>
+    <select name="db" id="dbAlta" onchange="cambioBase2()">
+        <option  value="fs" disabled>File System</option>
+        <option  value="MySQL">MySQL</option>
+        <option  value="MySQLDBaaS" disabled>MySQLDBaaS</option>
+        <option value="SQLite3">SQLite3</option>
+        <option value="MongoD" selected>MongoD</option>
+        <option value="MongoDBaaS">MongoDBaaS</option>
+        <option disabled value="Firebase">Firebase</option>
+    </select> 
+    <button onclick="dbAlta()">ConsoleLog Base Seleccionada</button> --}}
+    {{!-- <button onclick="renderMensajes()">ConsoleLog Mensajes</button> --}}
+  </div>
+</div>
+
+<div class="container">
+    <p>Argumentos de entrada: {{info.ArgumentosEntrada}}</p> 
+    <br>
+    <p>Nombre de la plataforma (sistema operativo): {{info.PlatformName}}</p> 
+    <br>
+    <p>Versión de node.js: {{info.NodeVersion}}</p> 
+    <br>
+    <p>Uso de memoria: {{info.MemoryUsage}}</p> 
+    <br>
+    <p>Path de ejecución: {{info.ExecPath}}</p> 
+    <br>
+    <p>Process id: {{info.ProcessId}}</p> 
+    <br>
+    <p>Carpeta corriente: {{info.CurrentPath}}</p> 
+    <br>
+    <p>Cantidad de nucleos: {{info.numCPU}}</p> 
+    <br>
+</div>
+
+{{!-- <script src="indexMs.js"></script> --}}
+{{!-- DESAFIO 10 HANDLEBARS --}}
+{{!-- LISTADO DE PRODUCTOS POR ID/ GET --}}
