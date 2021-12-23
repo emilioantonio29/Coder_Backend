@@ -27,7 +27,7 @@ DESAFIO: 30
 
 2) Agregar en la vista info, el número de procesadores presentes en el servidor: done
 
-3) Agregar en la vista info, el número de procesadores presentes en el servidor: done
+3) Ejecutar el servidor (modos FORK y CLUSTER) con nodemon verificando el número de procesos tomados por node: done
         Hay que inicializarlo con: nodemon src/server.js Parametro1(PUERTO) Parametro2(ClientKeyTwitter) Parametro3(ClientSecretKeyTwitter) Parametro4(FORK o CLUSTER)
 
 4) Forever: Ejecutar el servidor (con los parámetros adecuados) utilizando Forever; Listar los procesos por Forever y por sistema operativo
