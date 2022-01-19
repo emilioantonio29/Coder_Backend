@@ -1,0 +1,91 @@
+
+
+
+/*
+ .linkEffect ul { 
+  margin: 150px auto 0; 
+  padding: 0; 
+  list-style: none; 
+  display: table;
+  width: 600px;
+  text-align: center;
+}
+.linkEffect  li { 
+  display: table-cell; 
+  position: relative; 
+  padding: 15px 0;
+} 
+.linkEffect .linkEffectActive  {
+  color: #812d81;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.001em;
+  display: inline-block;
+  padding: 5px 5px;
+  position: relative;
+}
+.linkEffect .linkEffectActive:after {    
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 20%;
+  position: absolute;
+  background: #b465b4;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  width: 0;
+}
+.linkEffect .linkEffectActive:after { 
+  width: 100%; 
+  left: 0; 
+}
+
+.linkEffect li{
+  color: #83674c
+}
+
+.linkEffect li button:hover{
+  color: #b465b4
+}
+*/
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* background-color: rgb(121, 117, 117); */
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: #83674c;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li i {
+  display: block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  /* background-color: #111; */
+  color: #b465b4
+}
+
+.active {
+  /* background-color: #04AA6D; */
+  color: #cc60cc !important;
+  text-transform: uppercase;
+  letter-spacing: 0.001em;
+
+}

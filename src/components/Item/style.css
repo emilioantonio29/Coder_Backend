@@ -1,0 +1,379 @@
+/* @charset "UTF-8"; */
+/*  INSTALACION SCSS
+
+1.- Instalar nodejs
+2.- Instalar npm
+3.- Ingresar al directorio del repositorio:
+    Iniciar el npm, con npm init
+    Instalar el nodemon: npm install -D node-sass nodemon
+4.- Crear la carpeta SCSS y CSS y sus archivos respectivos (style.css & style.scss)
+5.- Editar el package.json e insertar los lineas:
+    "build-css": "node-sass --include-path scss scss/prueba.scss css/pruebacss.css",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+    Donde se indica cuál será el archivo inicial de SCSS y adónde va a compilar el .CSS
+6.- Compilar con npm: run watch-css
+    sass --watch scss/style.scss css/style.css          */
+/******************************************************************************MENU***************************************************************************/
+/* .carAdd:hover {
+  color: #83674c;
+} */
+
+.container{
+    padding: 0% !important;
+    margin-bottom: 0% !important;
+}
+
+.fondo {
+    background-color: #f5ece3;
+  }
+  .borderImg2 img {
+    height: 120px;
+    width: 80px;
+    border: solid 0.1px #c4a990;
+  }
+
+  .trashC {
+    position: relative;
+    width: 65px;
+    margin-top: -18px;
+    margin-left: 20px;
+  }
+
+  .trashC:hover .trashOverlay {
+    width: 100%;
+    background-color: #f5ece3;
+  }
+  .trashC2 {
+    position: relative;
+    width: 135px;
+    margin-left: 50px;
+  }
+
+  .btnTrash {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+
+  .trash {
+    height: 40px;
+    width: 40px;
+    color: inherit;
+    border: none;
+    padding: 0;
+    background-color: #f5ece3;
+    cursor: pointer;
+    outline: inherit;
+    padding: 6px 8px 4px 8px;
+    color: #c94343;
+  }
+  .trashOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    overflow: hidden;
+    width: 0;
+    height: 100%;
+    transition: 0.5s ease;
+    margin-left: 37px;
+  }
+
+
+  .trashText {
+    background-color: #f5ece3;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+    padding-right: 8px;
+    box-shadow: none !important;
+    outline: 0 !important;
+  }
+  .fixC {
+    margin-top: -5px;
+  }
+  /* .carAdd:hover {
+    color: #83674c;
+  } */
+  .carAdd:focus {
+    outline: none;
+    box-shadow: none;
+  }
+.btn:focus{
+    outline: none;
+    box-shadow: none;
+}
+  
+.addDown {
+    color: #a94442;
+    border-color: #ebccd1;
+    display: none;
+    position: relative;
+    margin-left: -9px;
+  }
+
+  .cantidad2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .cantidad2 div p {
+    margin: auto;
+    padding-bottom: 10px;
+  }
+
+  .btn-toggle {
+    margin: 0 4rem;
+    padding: 0;
+    position: relative;
+    border: none;
+    height: 1.5rem;
+    width: 3rem;
+    border-radius: 1.5rem;
+    color: #6b7381;
+    background: #85bb65;
+  }
+  .btn-toggle:focus,
+  .btn-toggle.focus,
+  .btn-toggle:focus.active,
+  .btn-toggle.focus.active {
+    outline: none;
+    box-shadow: none;
+  }
+  .btn-toggle:before,
+.btn-toggle:after {
+  line-height: 1.5rem;
+  width: 4rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: absolute;
+  bottom: 0;
+  transition: opacity 0.25s;
+}
+
+.btn-toggle:before {
+    content: "Off";
+    left: -4rem;
+  }
+  
+  .btn-toggle:after {
+    content: "On";
+    right: -4rem;
+    opacity: 0.5;
+  }
+  
+  .btn-toggle > .handle {
+    position: absolute;
+    top: 0.1875rem;
+    left: 0.1875rem;
+    width: 1.125rem;
+    height: 1.125rem;
+    border-radius: 1.125rem;
+    background: #fff;
+    transition: left 0.25s;
+  }
+  
+  .btn-toggle.active {
+    transition: background-color 0.25s;
+  }
+  
+  .btn-toggle.active > .handle {
+    left: 1.6875rem;
+    transition: left 0.25s;
+  }
+  
+  .btn-toggle.active:before {
+    opacity: 0.5;
+  }
+  
+  .btn-toggle.active:after {
+    opacity: 1;
+  }
+  
+  .btn-toggle.btn-sm:before,
+  .btn-toggle.btn-sm:after {
+    line-height: -0.5rem;
+    color: #fff;
+    letter-spacing: 0.75px;
+    left: 0.4125rem;
+    width: 2.325rem;
+  }
+  
+  .btn-toggle.btn-sm:before {
+    text-align: right;
+  }
+  
+  .btn-toggle.btn-sm:after {
+    text-align: left;
+    opacity: 0;
+  }
+  
+  .btn-toggle.btn-sm.active:before {
+    opacity: 0;
+  }
+  
+  .btn-toggle.btn-sm.active:after {
+    opacity: 1;
+  }
+  
+  .btn-toggle.btn-xs:before,
+  .btn-toggle.btn-xs:after {
+    display: none;
+  }
+  
+  .btn-toggle:before,
+  .btn-toggle:after {
+    color: #85bb65;
+  }
+  
+  .btn-toggle.active {
+    background-color: #75AADB;
+  }
+  
+  .btn-toggle.btn-sm {
+    margin: 0 0.5rem;
+    padding: 0;
+    position: relative;
+    border: none;
+    height: 1.5rem;
+    width: 3rem;
+    border-radius: 1.5rem;
+  }
+  
+  .btn-toggle.btn-sm:focus,
+  .btn-toggle.btn-sm.focus,
+  .btn-toggle.btn-sm:focus.active,
+  .btn-toggle.btn-sm.focus.active {
+    outline: none;
+    box-shadow: none;
+  }
+  
+  .btn-toggle.btn-sm:before,
+  .btn-toggle.btn-sm:after {
+    line-height: 1.5rem;
+    width: 0.5rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.55rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: absolute;
+    bottom: 0;
+    transition: opacity 0.25s;
+  }
+  
+  .btn-toggle.btn-sm:before {
+    content: "USD";
+    left: -0.5rem;
+  }
+  
+  .btn-toggle.btn-sm:after {
+    content: "ARS";
+    right: -0.5rem;
+    opacity: 0.5;
+  }
+  
+  .btn-toggle.btn-sm > .handle {
+    position: absolute;
+    top: 0.1875rem;
+    left: 0.1875rem;
+    width: 1.125rem;
+    height: 1.125rem;
+    border-radius: 1.125rem;
+    background: #fff;
+    transition: left 0.25s;
+  }
+  
+  .btn-toggle.btn-sm.active {
+    transition: background-color 0.25s;
+  }
+  
+  .btn-toggle.btn-sm.active > .handle {
+    left: 1.6875rem;
+    transition: left 0.25s;
+  }
+  
+  .btn-toggle.btn-sm.active:before {
+    opacity: 0.5;
+  }
+  
+  .btn-toggle.btn-sm.active:after {
+    opacity: 1;
+  }
+  
+  .btn-toggle.btn-sm.btn-sm:before,
+  .btn-toggle.btn-sm.btn-sm:after {
+    line-height: -0.5rem;
+    color: #fff;
+    letter-spacing: 0.75px;
+    left: 0.4125rem;
+    width: 2.325rem;
+  }
+  
+  .btn-toggle.btn-sm.btn-sm:before {
+    text-align: right;
+  }
+  
+  .btn-toggle.btn-sm.btn-sm:after {
+    text-align: left;
+    opacity: 0;
+  }
+  
+  .btn-toggle.btn-sm.btn-sm.active:before {
+    opacity: 0;
+  }
+  
+  .btn-toggle.btn-sm.btn-sm.active:after {
+    opacity: 1;
+  }
+  
+  .btn-toggle.btn-sm.btn-xs:before,
+  .btn-toggle.btn-sm.btn-xs:after {
+    display: none;
+  }
+  
+  .btn-toggle.btn-secondary {
+    color: #6b7381;
+    background: #bdc1c8;
+  }
+  
+  .btn-toggle.btn-secondary:before,
+  .btn-toggle.btn-secondary:after {
+    color: #6b7381;
+  }
+  
+  .btn-toggle.btn-secondary.active {
+    background-color: #ff8300;
+  }
+  
+
+table thead tr .centre{
+    /* background-color: red; */
+    text-align: center;
+    vertical-align: middle;
+}
+
+.item{
+  padding: 0%;
+}

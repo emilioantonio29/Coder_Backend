@@ -1,0 +1,76 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* 1 ----------------------------------- NAVBAR */
+  .navbar {
+  background: linear-gradient(to right, #f5ece3, white, #f5ece3, white);
+  display: flex !important;
+  /* position: fixed; */
+  width: 100%;
+  z-index: 16;
+  box-shadow: 0 8px 6px -6px black;
+  box-shadow:
+  0 2.8px 2.2px rgba(188, 147, 192, 0.034),
+  0 6.7px 5.3px rgba(137, 96, 141, 0.034),
+  0 12.5px 10px rgba(108, 56, 112, 0.034),
+  0 22.3px 17.9px rgba(94, 38, 99, 0.034),
+  0 41.8px 33.4px rgba(84, 22, 90, 0.034),
+  0 100px 80px rgba(57, 11, 61, 0.034);
+  /* .dropdown-item{
+      .navbar-toggler:focus,
+      .navbar-toggler:active,
+      .navbar-toggler-icon:focus {
+          outline: none;
+          box-shadow: none;
+}
+  } */
+}
+
+.logo{
+  height: 130px !important;
+  width: 130px;
+  /* border: 1px solid red; */
+
+}
+img{
+  height: 130px !important;
+  width: 130px;
+  /* border: 1px solid red; */
+}

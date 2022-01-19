@@ -1,0 +1,127 @@
+.intro {
+    margin-top: 150px;
+    height: 5px;
+    background: linear-gradient(to right, #d4c0d4, white, #d4c0d4, white);
+  }
+.center img {
+    border: 1px solid red;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+  }
+.gb {
+    height: 50px;
+    background: linear-gradient(to right, #d4c0d4, white, #d4c0d4, white);
+
+  }
+.gb p {
+    margin: 0px;
+    color: #7e5127 !important;
+  }
+.gb p strong a {
+    color: inherit;
+    /* blue colors for links too */
+    text-decoration: inherit;
+    /* no underline */
+  }
+.gb p strong:hover {
+    color: #855585;
+  }
+  
+  /*------------------------otro gb*/
+  .gb2 {
+    height: 25px;
+    background: linear-gradient(to right, #d4c0d4, white, #d4c0d4, white);
+
+  }
+  .gb3 {
+    height: 5px;
+    background: linear-gradient(to right, #d4c0d4, white, #d4c0d4, white);
+
+  }
+.gb2 p {
+    margin: 0px;
+    color: #7e5127 !important;
+  }
+.gb2 p strong a {
+    color: inherit;
+    /* blue colors for links too */
+    text-decoration: inherit;
+    /* no underline */
+  }
+.gb2 p strong:hover {
+    color: #855585;
+  }
+.redes {
+    /*=======================FIRMA================*/
+  }
+.redes .social-menu2 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 30px;
+  }
+.redes .social-menu2 .social-menu22 {
+    list-style: none;
+    margin: 0 10px;
+  }
+.redes .social-menu2 .social-menu22 .fa {
+    color: #7e5127;
+    font-size: 25px;
+    line-height: 50px;
+    transition: 0.5s;
+  }
+.redes .social-menu2 .social-menu22 .fa:hover {
+    color: #c278c2;
+  }
+.redes .social-menu2 .social-menu22 a {
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: transparent;
+    text-align: center;
+    transition: 0.5s;
+    transform: translate(0, 0px);
+    box-shadow: 0px 7px 5px #a077a0;
+  }
+  .ajusteCol {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .borderImg img {
+    height: 120px;
+    width: 120px;
+    border: solid 0.1px #c4a990;
+  }
+  
+  .borderImg2 img {
+    height: 120px;
+    width: 80px;
+    border: solid 0.1px #c4a990;
+  }
+  .colorBrown {
+    color: #7e5127 !important;
+  }
+  
+  .colorBrown2 {
+    color: #7e5127 !important;
+  }
+  
+  .colorIcon {
+    color: #b465b4 !important;
+  }
+  .footerC{
+      /* border:1px solid red; */
+      background-image: linear-gradient(to right, white, #f5ece3, white, #f5ece3) !important    ;
+  }
+ 
+  .container2{
+      margin: 0% auto !important;   
+      padding: 0% !important;
+  }
