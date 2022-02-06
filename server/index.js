@@ -3,9 +3,9 @@
 const path = require("path");
 const express = require("express");
 const app = express(); // create express app
-const {routerRender} = require('./routerRender.js')
-const {apiFirebase} = require('./apiFirebase.js')
-const {apiMongo} = require('./apiMongo.js')
+const {routerRender} = require('./src/routes/routerRender.js')
+const {apiFirebase} = require('./src/routes/apiFirebase.js')
+const {apiMongo} = require('./src/routes/apiMongo.js')
 
 
 //app.use(paso1)
@@ -17,11 +17,13 @@ function paso1(req, res, next){
 }
 //app.get('/test', paso1)
 
+
 app.post('/test', (req,res)=>{
   const prueba = req.body
   console.log(prueba)
-  ///res.json({ok:"ok"})
   res.send("ok");
+
+  // ESTE ENDPOINT DEVUELVE OK, PERO EL REQ.BODY ES UNDEFINED PORQUE EL MIDDLEWARE DE EXPRESS.json() ESTA ABAJO
 
 })
 

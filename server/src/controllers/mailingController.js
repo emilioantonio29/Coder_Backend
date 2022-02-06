@@ -5,7 +5,7 @@ const { initializeApp, applicationDefault, cert } = require('firebase-admin/app'
 const { getAuth, createUserWithEmailAndPassword } = require('firebase-admin/auth');
 const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
 const path = require("path");
-const serviceAccount = require('./serviceAccountKey.json');
+const serviceAccount = require('../../serviceAccountKey.json');
 const {auth} = require('./apiMongo.js')
 const { createTransport } = require('nodemailer');
 
@@ -65,7 +65,10 @@ const apiFirebase = () =>{
   }
 
   routerApi.post('/comprar', (req, res) =>{
-    console.log(req.body)
+
+    res.send("working on it")
+
+    /*console.log(req.body)
     console.log(req.body.comprador.username)
     //TEST_MAIL = req.body.comprador.username
     const mailOptions = {
@@ -85,7 +88,7 @@ const apiFirebase = () =>{
       console.log("no enviado")
       console.log(error)
       res.json(error)
-    })
+    })*/
     
   })
 

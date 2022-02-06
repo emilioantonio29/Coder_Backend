@@ -3,8 +3,8 @@
 const path = require("path");
 const express = require("express");
 const app = express(); // create express app
-const {routerRender} = require('./routerRender.js')
-const {apiFirebase} = require('./apiFirebase.js')
+const {routerRender} = require('./src/routes/routerRender.js')
+const {apiFirebase} = require('./src/routes/apiFirebase.js')
 
 
 
