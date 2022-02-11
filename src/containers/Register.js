@@ -41,6 +41,7 @@ const Register = () =>{
 
     const [botonDisabled, setBotonDisabled] = React.useState("");
     const [faltanDatos, setFaltanDatos] = React.useState("")
+    const [mostrarLogin, setMostrarlogin] = React.useState(false)
 
     const nombreF = (e) =>{
         setNombre(e.nativeEvent.target.value)
@@ -156,6 +157,7 @@ const Register = () =>{
                         // cleanAll();
                         registroOk();
                         cleanAll()
+                        setMostrarlogin(true)
                         //e.target.reset();
                     }else if(response.data === ""){
                         registroFail();
@@ -398,6 +400,29 @@ const Register = () =>{
                         <p style={{color: "#d67ad6"}}>{faltanDatos}</p>
                     </form>
                 </div>
+                {mostrarLogin ? 
+                    <>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <div className="d-flex justify-content-center" >
+                            <div className='col-md-4'>
+                                <div>
+                                    <p style={{color: "#d67ad6"}}>* ¿Ya te registraste? inicia tu sesión:</p>
+                                </div>
+                                <div className=''>
+                                    <Link to={`/inicio-de-sesion`}>
+                                        <button className="  btnNoStyle">Login</button>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+                :
+                    <>
+                    </>
+                }
+                
             </div>
 
 

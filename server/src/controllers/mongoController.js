@@ -35,7 +35,7 @@ const auth = (req, res, next) => {
 // RUTAS
 class RutasMongoPassport{
   static barra = (req, res) =>{
-    res.json({saludo:"prueba localhost:8080/apiMongo"})
+    res.json({saludo:"Bienvenido a la raiz de la ruta apiMongo"})
   }
 
   static tester = (req, res) =>{

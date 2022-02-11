@@ -3,48 +3,14 @@
 const path = require("path");
 const express = require("express");
 const app = express(); // create express app
-const {routerRender} = require('./src/routes/routerRender.js')
+const {routerRender} = require('./src/routes/apiRender.js')
 const {apiFirebase} = require('./src/routes/apiFirebase.js')
 const {apiMongo} = require('./src/routes/apiMongo.js')
 const session = require('express-session');
 const passport = require('passport');
 const cookieParser = require('cookie-parser')
 
-
-
-/*const {getUserDbMongo, createUserDbMonto} = require("./src/db/mongoDb")
-
-
-const testuser = {
-  nombre: 'Emilio',
-  apellido: 'Martinez',
-  username: 'emilio_antonio2@hotmail.com',
-  password: '2',
-  provincia: 'Capital Federal',
-  localidad: 'Caballito',
-  calle: '1',
-  altura: '233',
-  zip: '1182',
-  telefono: '01567552479',
-  tyc: true,
-  fecha: '2022-02-11T02:12:49.660Z'
-}
-
-createUserDbMonto(testuser).then((data)=>{
-  console.log("create here")
-  console.log(data)
-})*/
-
-// TEST: cuando no hay datos devuelve NULL
-/*
-const {getUserDbMongo} = require("./src/db/mongoDb")
-
-getUserDbMongo("emili_antonio29@hotmail.com").then((data)=>{
-  console.log("DATA HERE")
-  console.log(data)
-})
-*/
-
+// TEST: post
 app.post('/test', (req,res)=>{
   const prueba = req.body
   console.log(prueba)
@@ -52,6 +18,7 @@ app.post('/test', (req,res)=>{
   // ESTE ENDPOINT DEVUELVE OK, PERO EL REQ.BODY ES UNDEFINED PORQUE EL MIDDLEWARE DE EXPRESS.json() ESTA ABAJO
 })
 
+// MIDDLEWARES
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
@@ -66,25 +33,20 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-// add middlewares
+// ROUTES
 app.use('/api', routerRender())
 app.use('/apiFirebase', apiFirebase())
 app.use('/apiMongo', apiMongo())
+
+// FRONT
 app.use(express.static(path.join(__dirname, "..", "build")));
 //app.use(express.static("public"));
-
-
-
 app.use((req, res) => {
   console.log("paso")
   res.sendFile(path.join(__dirname, "..", "build", "index.html"));
 });
 
-
-
-// app.set('views', './public');
-const port = process.env.POR || 5000;
-// start express server on port 5000
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log("server started on port 5000");
 });
