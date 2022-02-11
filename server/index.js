@@ -11,6 +11,40 @@ const passport = require('passport');
 const cookieParser = require('cookie-parser')
 
 
+
+/*const {getUserDbMongo, createUserDbMonto} = require("./src/db/mongoDb")
+
+
+const testuser = {
+  nombre: 'Emilio',
+  apellido: 'Martinez',
+  username: 'emilio_antonio2@hotmail.com',
+  password: '2',
+  provincia: 'Capital Federal',
+  localidad: 'Caballito',
+  calle: '1',
+  altura: '233',
+  zip: '1182',
+  telefono: '01567552479',
+  tyc: true,
+  fecha: '2022-02-11T02:12:49.660Z'
+}
+
+createUserDbMonto(testuser).then((data)=>{
+  console.log("create here")
+  console.log(data)
+})*/
+
+// TEST: cuando no hay datos devuelve NULL
+/*
+const {getUserDbMongo} = require("./src/db/mongoDb")
+
+getUserDbMongo("emili_antonio29@hotmail.com").then((data)=>{
+  console.log("DATA HERE")
+  console.log(data)
+})
+*/
+
 app.post('/test', (req,res)=>{
   const prueba = req.body
   console.log(prueba)
@@ -18,12 +52,6 @@ app.post('/test', (req,res)=>{
   // ESTE ENDPOINT DEVUELVE OK, PERO EL REQ.BODY ES UNDEFINED PORQUE EL MIDDLEWARE DE EXPRESS.json() ESTA ABAJO
 })
 
-// add middlewares
-app.use('/api', routerRender())
-app.use('/apiFirebase', apiFirebase())
-app.use('/apiMongo', apiMongo())
-app.use(express.static(path.join(__dirname, "..", "build")));
-//app.use(express.static("public"));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 app.use(cookieParser())
@@ -37,6 +65,14 @@ app.use(session({
 }))
 app.use(passport.initialize());
 app.use(passport.session());
+
+// add middlewares
+app.use('/api', routerRender())
+app.use('/apiFirebase', apiFirebase())
+app.use('/apiMongo', apiMongo())
+app.use(express.static(path.join(__dirname, "..", "build")));
+//app.use(express.static("public"));
+
 
 
 app.use((req, res) => {
