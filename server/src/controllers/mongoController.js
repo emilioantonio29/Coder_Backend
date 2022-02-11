@@ -1,6 +1,5 @@
 const express = require('express')
 const app = express()
-var flash = require('connect-flash');
 const server = require('http').Server(app)
 const path = require("path");
 const cookieParser = require('cookie-parser')
@@ -31,20 +30,6 @@ const userMongoaaS = mongoose.model('users', userSchema)
 const apiMongo = () =>{
 
   const routerApiMongo = express.Router()
-  routerApiMongo.use(express.json())
-  routerApiMongo.use(express.urlencoded({extended: true}))
-  routerApiMongo.use(cookieParser())
-  routerApiMongo.use(flash());
-  routerApiMongo.use(session({
-    secret: 'WAZAAAAAAAAaa',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-      maxAge: 60000
-    }
-  }))
-  routerApiMongo.use(passport.initialize());
-  routerApiMongo.use(passport.session());
 
   passport.use('register', new LocalStrategy({ passReqToCallback: true }, (req, username, password, done) => {
     console.log("===================================================> PASSPORT register")
@@ -216,7 +201,7 @@ const apiMongo = () =>{
     failureRedirect: '/apiMongo/loginfailure', successRedirect: '/apiMongo/loginsuccess' }))
 
   routerApiMongo.post('/registro', passport.authenticate('register', 
-  { failureRedirect: '/apiMongo/registerfailure', successRedirect: '/apiMongo/registersuccess', failureFlash: true, successFlash: true }))
+  { failureRedirect: '/apiMongo/registerfailure', successRedirect: '/apiMongo/registersuccess'}))
 
 
 

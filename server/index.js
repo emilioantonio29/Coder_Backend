@@ -6,25 +6,16 @@ const app = express(); // create express app
 const {routerRender} = require('./src/routes/routerRender.js')
 const {apiFirebase} = require('./src/routes/apiFirebase.js')
 const {apiMongo} = require('./src/routes/apiMongo.js')
-
-
-//app.use(paso1)
-
-function paso1(req, res, next){
-  console.log("paso1")
-  res.json({cambialo: true})
-  next();
-}
-//app.get('/test', paso1)
+const session = require('express-session');
+const passport = require('passport');
+const cookieParser = require('cookie-parser')
 
 
 app.post('/test', (req,res)=>{
   const prueba = req.body
   console.log(prueba)
   res.send("ok");
-
   // ESTE ENDPOINT DEVUELVE OK, PERO EL REQ.BODY ES UNDEFINED PORQUE EL MIDDLEWARE DE EXPRESS.json() ESTA ABAJO
-
 })
 
 // add middlewares
@@ -33,6 +24,19 @@ app.use('/apiFirebase', apiFirebase())
 app.use('/apiMongo', apiMongo())
 app.use(express.static(path.join(__dirname, "..", "build")));
 //app.use(express.static("public"));
+app.use(express.json())
+app.use(express.urlencoded({extended: true}))
+app.use(cookieParser())
+app.use(session({
+  secret: 'WAZAAAAAAAAaa',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 60000
+  }
+}))
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 app.use((req, res) => {

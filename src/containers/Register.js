@@ -113,8 +113,9 @@ const Register = () =>{
         setTelefonoS("") 
         setTYCS("") 
     }
+
     const handleSubmit = (e) => {
-        //e.preventDefault()
+        e.preventDefault()
         //console.log(nombre + " " + apellido + username + " " + password + " " + password2 + " " + provincia
         //+ " " + localidad+ " " + calle+ " " + altura+ " " + zip+ " " + telefono+" "+tyc);
         // ... submit to API or something
@@ -128,8 +129,6 @@ const Register = () =>{
                 setFaltanDatos("* Las contraseñas no coinciden")
 
             }else{
-                //llamado al endpoint
-                e.preventDefault()
                 cleanV()
                 setFaltanDatos("")
                 setBotonDisabled("disabled")
@@ -149,8 +148,7 @@ const Register = () =>{
                     telefono: telefono,
                     tyc: true, 
                     fecha: fecha
-                  }
-                  )
+                  })
                   .then(function (response) {
                     setLoader(false)
                     //console.log(response)
@@ -167,7 +165,8 @@ const Register = () =>{
                     setLoader(false)
                     registroError()
                     console.log(error);
-                }).finally(()=>{
+                  })
+                  .finally(()=>{
                         axios.get('/apiMongo/logout').then((response) => {
 
                             //console.log(response.data)
@@ -180,7 +179,7 @@ const Register = () =>{
                         }).catch((err)=>{
                             console.log(err)
                         })
-                })
+                    })
             }
         }else{
             nombre ? setNombreS("") : setNombreS("*")
