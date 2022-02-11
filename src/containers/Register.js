@@ -316,7 +316,7 @@ const Register = () =>{
                         </div>
                         <div className="form-group">
                             <label for="email">Email <strong style={{color: "#d67ad6"}}>{usernameS}</strong></label>
-                            <input onChange={usernameF} required type="email" className="form-control" id="email" placeholder="emilio@test.com"/>
+                            <input value={username} onChange={usernameF} required type="email" className="form-control" id="email" placeholder="emilio@test.com"/>
                         </div>
                         <div className="form-row">
                             <div className="form-group col-md-6">
