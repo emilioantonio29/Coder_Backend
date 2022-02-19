@@ -1,4 +1,4 @@
-const {getProductsFirebase} = require("../db/firebaseDb")
+const {getProductsFirebase} = require("../daos/dao/firebaseDb")
 
 
 

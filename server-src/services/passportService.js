@@ -1,6 +1,6 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const {getUserDbMongo, createUserDbMongo} = require("../db/mongoDb")
+const {getUserDbMongo, createUserDbMongo} = require("../daos/dao/mongoDb")
 
 
 passport.serializeUser(function (user, done) {

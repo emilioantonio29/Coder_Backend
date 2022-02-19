@@ -3,9 +3,9 @@
 const path = require("path");
 const express = require("express");
 const app = express(); // create express app
-const {routerRender} = require('./src/routes/apiRender.js')
-const {apiFirebase} = require('./src/routes/apiFirebase.js')
-const {apiMongo} = require('./src/routes/apiMongo.js')
+const {routerRender} = require('./server-src/routes/apiRender.js')
+const {apiFirebase} = require('./server-src/routes/apiFirebase.js')
+const {apiMongo} = require('./server-src/routes/apiMongo.js')
 const session = require('express-session');
 const passport = require('passport');
 const cookieParser = require('cookie-parser')
@@ -39,11 +39,11 @@ app.use('/apiFirebase', apiFirebase())
 app.use('/apiMongo', apiMongo())
 
 // FRONT
-app.use(express.static(path.join(__dirname, "..", "build")));
+app.use(express.static(path.join(__dirname, ".", "client-react/build")));
 //app.use(express.static("public"));
 app.use((req, res) => {
   console.log("paso")
-  res.sendFile(path.join(__dirname, "..", "build", "index.html"));
+  res.sendFile(path.join(__dirname, ".", "public/build", "index.html"));
 });
 
 const port = process.env.PORT || 5000;
