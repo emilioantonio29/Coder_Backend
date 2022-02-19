@@ -13,21 +13,22 @@ El package.json en el root lo utilizo para el deploy en Heroku. Basicamente inst
 
 Se implementó el patron DAOS en la capa de persistencia.
 
-_________    _____________________________________________________    ______________
-|       | -> |                     BACK                          | -> |  DBs       |
-| front |    |                                 ________________  |    |            |
-|       | <- |   ------    ------    ------    |  ----- ----- |  | <- | mongoAtlas |
----------    |   |    | -> |    | -> |    | -> |  |   | |   | |  |    | firestore  |
-             |   |    |    |    |    |    |    |  | c | | m | |  |    --------------
-             |   |____| <- |____| <- |____| <- |  |___| |___| |  |
-             |                                 |______________|  |
-             |   routes  controller  service          DAO        |
-             -----------------------------------------------------
-                                    ↓   ↑
-                          --------------------------
-                          |                        |
-                          |       TEST LAYER       |
-                          |________________________|
+    _________    _____________________________________________________    ______________
+    |       | -> |                     BACK                          | -> |  DBs       |
+    | front |    |                                 ________________  |    |            |
+    |       | <- |   ------    ------    ------    |  ----- ----- |  | <- | mongoAtlas |
+    ---------    |   |    | -> |    | -> |    | -> |  |   | |   | |  |    | firestore  |
+                 |   |    |    |    |    |    |    |  | c | | m | |  |    --------------
+                 |   |____| <- |____| <- |____| <- |  |___| |___| |  |
+                 |                                 |______________|  |
+                 |   routes  controller  service          DAO        |
+                 -----------------------------------------------------
+                                        ↓   ↑
+                              --------------------------
+                              |                        |
+                              |       TEST LAYER       |
+                              |________________________|
+
 
 Se implementará una nueva capa de TEST: npm run test, prueba la ruta de traer los productos y las conexiones a las bases de datos.
 
