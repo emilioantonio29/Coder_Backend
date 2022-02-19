@@ -5,30 +5,32 @@ Aplicacion MERN Stack
 
 ###Configuracion: 
 
-En el directorio principal estan todos los archivos del servidor, correr npm i para instalar dependencias del Server.
+update 19/02/2022.
 
-En el directorio /client-react correr npm i para instalar dependencias del Cliente (React). 
-Aclaración: No hay proxy configurado; react le pega a los endpoints como si fueran locales, ya que el server esta configurado para renderizar el build de react.
+Subiendo nueva arquitectura en al aplicacion: directorio client-react tiene todo el contenido completo de la app de react; el directorio server-express tiene toda la configuracion de un servidor de express.
 
-El directorio /public-htmlOnWire contiene vistas de prueba que no estan en uso.
+El package.json en el root lo utilizo para el deploy en Heroku. Basicamente instruye en heroku que primero debe entrar al directorio de react y buildear la app, y luego debe ir al directorio del server a iniciar el servidor, el cual esta configurado con el modelo Data on Wire, las rutas para renderizar vistas apuntan al build de React.
+
+Se implementó el patron DAOS en la capa de persistencia.
+
+Se implementará una nueva capa de TEST.
 
 
 ###RUN APP: 
 
-El stack se migró del modelo html on wire (pug, handlebars), al stack MERN.
+El entorno de trabajo de trabajo esta configurado desarrollar con varias opciones:
 
-El entorno de trabajo de trabajo esta configurado para desarrollar con 3 opciones posibles (ver opciones en los archivos package.json):
-
-    1.- Servidor: correr cada comando segun lo necesitado.
-    -   npm start; inicia el server en el puerto 5000 o en el process.env.PORT. El server está configurado por defecto para pegarle al
-    build que ya debe estar en el directorio de React.
-    -   npm run start-dev; inicia el server con las mismas caracteristicas mencionadas en el punto anterior, pero se inicia con nodemon.
+    1.- directorio server-express: 
+    -   correr npm run start-dev; inicia el server en el puerto 5000 o en el process.env.PORT con nodemon. El server renderiza y esta apuntando al ultimo build que ya debe estar en el directorio de React.
+    -   npm start; inicia el servidor con la instruccion por defecto de node (node index.js).
     -   npm run start-build; ejecuta dos procesos. Primero va al directorio client-react y buildea react, luego ejecuta el servidor con
     nodemon. Esta opcion asegura que siempre se renderizará el ultimo cambio realizado en React.
 
     2.- Cliente: se encuentra en el directorio /client-react; se pueden ejecutar las instrucciones bien conocidas de react.
     -   npm start
     -   npm run build
+
+    3.- El package.json del root hace referencia a la config para deployar en Heroku.
 
 
 ###HEROKU: 

@@ -1,33 +1,6 @@
 {
-  "name": "server",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start-dev": "nodemon index.js",
-    "start": "node index.js",
-    "start-build": "(cd ./client-react && npm run build) && (cd ../ && nodemon server.js)"
-  }, 
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.19.1",
-    "connect-flash": "^0.1.1",
-    "cookie-parser": "^1.4.5",
-    "express": "^4.17.2",
-    "express-handlebars": "^5.3.0",
-    "express-session": "^1.17.2",
-    "firebase": "^9.6.2",
-    "firebase-admin": "^10.0.1",
-    "mongoose": "^5.13.0",
-    "multer": "^1.4.2",
-    "node-fetch": "^2.6.1",
-    "nodemailer": "^6.7.2",
-    "nodemon": "^2.0.15",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
-    "sequelize": "^6.13.0",
-    "session-file-store": "^1.5.0"
+    "heroku-prebuild": "cd client-react && npm install && npm run build && cd .. && cd server-express && npm install",
+    "start": "cd server-express && npm start"
   }
 }
