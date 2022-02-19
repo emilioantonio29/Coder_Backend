@@ -13,7 +13,23 @@ El package.json en el root lo utilizo para el deploy en Heroku. Basicamente inst
 
 Se implementó el patron DAOS en la capa de persistencia.
 
-Se implementará una nueva capa de TEST.
+_________                                   _____________________________________________________    ______________
+|       | ------------------------------->  |                     BACK                          | -> |  DBs       |
+| front |                                   |                                 ________________  |    |            |
+|       | <-------------------------------  |   ------    ------    ------    |  ----- ----- |  | <- | mongoAtlas |
+---------                                   |   |    | -> |    | -> |    | -> |  |   | |   | |  |    | firestore  |
+                                            |   |    |    |    |    |    |    |  | c | | m | |  |    --------------
+                                            |   |____| <- |____| <- |____| <- |  |___| |___| |  |
+                                            |                                 |______________|  |
+                                            |   routes  controller  service          DAO        |
+                                            -----------------------------------------------------
+                                                                      ↓   ↑
+                                                            --------------------------
+                                                            |                        |
+                                                            |      TEST LAYER        |
+                                                            |________________________|
+
+Se implementará una nueva capa de TEST: npm run test, prueba la ruta de traer los productos y las conexiones a las bases de datos.
 
 
 ###RUN APP: 
@@ -31,6 +47,8 @@ El entorno de trabajo de trabajo esta configurado desarrollar con varias opcione
     -   npm run build
 
     3.- El package.json del root hace referencia a la config para deployar en Heroku.
+
+    4.- npm run test; ejecuta las pruebas del index.test.js.
 
 
 ###HEROKU: 
