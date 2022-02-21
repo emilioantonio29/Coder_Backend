@@ -1,5 +1,11 @@
 const express = require('express')
-const {getProductsController, testerController, purchaseController} = require("../controllers/firebaseController") 
+const { getProductsController, 
+        testerController, 
+        purchaseController, 
+        buyersListController,
+        addBuyerController } = require("../controllers/firebaseController") 
+const { buyersSchema, buyerRoot } = require("./graphQL/firebaseSchema")
+const { graphqlHTTP} = require("express-graphql") 
 
 
 const apiFirebase = () =>{
@@ -7,14 +13,26 @@ const apiFirebase = () =>{
   const routerApi = express.Router()
   routerApi.use(express.json())
   routerApi.use(express.urlencoded({extended: true}))
-  
-
+  routerApi.use("/ordenes/graphql", graphqlHTTP({
+      schema: buyersSchema,
+      rootValue: buyerRoot,
+      graphiql: true
+  }))
+  routerApi.use("/compradores/graphql", graphqlHTTP({
+    schema: buyersSchema,
+    rootValue: buyerRoot,
+    graphiql: true
+}))
 
   routerApi.get('/', testerController)
 
   routerApi.get('/productos', getProductsController)
 
   routerApi.post('/comprar', purchaseController)
+
+  routerApi.get('/ordenes', buyersListController)
+
+  routerApi.post('/compradores', addBuyerController)
 
   return routerApi;
 }
