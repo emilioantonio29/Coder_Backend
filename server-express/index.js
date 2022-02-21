@@ -43,7 +43,7 @@ app.use(express.static(path.join(__dirname, "..", "client-react/build")));
 //app.use(express.static("public"));
 app.use((req, res) => {
   console.log("paso")
-  res.sendFile(path.join(__dirname, "..", "public/build", "index.html"));
+  res.sendFile(path.join(__dirname, "..", "client-react/build", "index.html"));
 });
 
 const port = process.env.PORT || 5000;

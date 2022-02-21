@@ -2,20 +2,6 @@ const { buildSchema } = require("graphql")
 const { buyersListService, addBuyerService } = require("../../services/firebaseService")
 
 
-const tester = {
-    items:[
-        {   cantidadComprada:6,
-            stockAfterBuy:24,
-            nombre:"Golfeado",
-            precio:220,
-            id:"21qS0AUU1VZm8UHE8OLz",
-            categoria:"Golfeados"}
-        ],
-    comprador:{telefono:"",nombre:"",email:""},
-    total:1320,
-    date:{_seconds:1617714446,_nanoseconds:972000000},
-    id:"1X7QaPB7eHmkhctX0LCs"}
-
 const buyersSchema = buildSchema(`
 
     type Items {
@@ -72,6 +58,7 @@ const buyersSchema = buildSchema(`
 
     type Query { 
         orders : [Compras]
+        ordersByUser(email: String) : [Compras]
     }
 
     type Mutation {
@@ -98,6 +85,14 @@ const buyerRoot = {
         let comprador = {'comprador': data.comprador, 'date': data.date, 'items': data.items, 'total': data.total};
         let ordenDeCompraId = await addBuyerService(comprador)
         return ordenDeCompraId;
+    },
+
+    ordersByUser : async (data) =>{
+        let compradores = await buyersListService()
+        let comprador = compradores.filter((elem) => elem.comprador.email == data.email)
+        //console.log(comprador)
+        //console.log(compradores)
+        return comprador
     }
 
 }

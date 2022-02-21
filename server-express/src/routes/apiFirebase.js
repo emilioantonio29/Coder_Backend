@@ -13,17 +13,13 @@ const apiFirebase = () =>{
   const routerApi = express.Router()
   routerApi.use(express.json())
   routerApi.use(express.urlencoded({extended: true}))
+  
   routerApi.use("/ordenes/graphql", graphqlHTTP({
       schema: buyersSchema,
       rootValue: buyerRoot,
       graphiql: true
   }))
-  routerApi.use("/compradores/graphql", graphqlHTTP({
-    schema: buyersSchema,
-    rootValue: buyerRoot,
-    graphiql: true
-}))
-
+  
   routerApi.get('/', testerController)
 
   routerApi.get('/productos', getProductsController)
