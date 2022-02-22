@@ -5,7 +5,7 @@ const passport = require('passport')
 require("../services/passportService")
 
 // COOKIE EXPIRE : 1 minuto = 60000
-const expire = 60000
+const expire = 3000000
 
 // ESTRATEGIAS
 const localLogin = passport.authenticate("login", {

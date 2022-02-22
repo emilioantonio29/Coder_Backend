@@ -63,7 +63,7 @@ import CartContainerDatos from './CartContainerDatos';
         <>
             {/* <button onClick={(()=>console.log())}>console.log</button> */}
             <div id="altura">
-              {paso1 ? <CartContainer/>: <></>}
+              {paso1 ? <CartContainer altura={"900px"}/>: <></>}
             </div>
             <div id="">
               {paso2 ? <CartContainerDatos altura={"900px"}/>: <></>}

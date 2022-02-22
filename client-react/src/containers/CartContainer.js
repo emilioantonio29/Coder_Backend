@@ -35,6 +35,8 @@ const CartContainer = () =>{
     const [showCart, setShowCart] = React.useState(true);
     const [moneda, setMoneda] = React.useState(true);
     const [totalDolar, setTotalDolar] = React.useState();
+    const [blurEffect, setBlurEffect] = React.useState("blur(0px)");
+
  
     // React.useEffect(() => {
        
@@ -202,7 +204,7 @@ const CartContainer = () =>{
             <title>SoyGlucosa | ProyectoCoder</title>
         </Helmet>
         {showCart ? (    
-        <div className="d-flex flex-column">
+        <div className="d-flex flex-column" style={{filter: blurEffect}}>
             <div className="d-flex justify-content-center" >
                 <div className="col-md-8 d-flex justify-content-left align-items-center noPad">
                     <p>

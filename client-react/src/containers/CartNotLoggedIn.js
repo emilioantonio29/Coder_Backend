@@ -68,7 +68,7 @@ import loginRequired2 from './loginRequired2.png'
                 </div>
             ):(
                 
-
+                
                 <div className="d-flex flex-column">
                 <div className="d-flex justify-content-center" >
                     <div className="col-md-8 d-flex justify-content-left align-items-center noPad">
@@ -101,6 +101,7 @@ import loginRequired2 from './loginRequired2.png'
 
             )}
         </>
+        
     )
 
 }

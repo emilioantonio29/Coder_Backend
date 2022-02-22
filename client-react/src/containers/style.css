@@ -816,6 +816,12 @@ transition: opacity 0.25s;
   color:#e4bae4 !important;
 }
 
+.spinner-grow2{
+  width: 5rem; 
+  height: 5rem; 
+  color:#e4bae4 !important;
+}
+
 .imagenItem{
   border:"1px solid red"
 }
@@ -989,4 +995,20 @@ li a:hover:not(.active) {
   text-transform: uppercase;
   letter-spacing: 0.001em;
 
+}
+
+.parentDisable{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: transparent;
+  opacity: 0.05;
+  z-index: 998;
+  height: 100%;
+  width: 100%;}
+
+  .modal-backdrop {
+    background-color: transparent !important;
+    height: 100% !important;
+    width: 100% !important;
 }

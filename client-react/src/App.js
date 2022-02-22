@@ -67,7 +67,8 @@ const App = () =>{
                 <Route path='/golfeados' exact={true} element={<ItemListContainerGolfeado/>} />
                 <Route path='/detalle-producto/:productoID' exact={true} element={<ItemDetailContainer/>} />
                 {/* <CartGlobalProvider> */}
-                  <Route path='/carrito' element={userLoggedIn.nombre === undefined ? <CartNotLoggedIn/> : <Cart/>} />
+                <Route path='/carrito' element={userLoggedIn.nombre === undefined ? <CartNotLoggedIn/> : <Cart/>} />
+                {/* <Route path='/carrito' element={<Cart/>} /> */}
                 {/* </CartGlobalProvider> */}
                 {/* <Route path='/carritoTest' exact={true} element={<Cart/>} /> */}
                 {/* <Route path='/carrito/paso-1' exact={true} element={<CartContainer/>} />

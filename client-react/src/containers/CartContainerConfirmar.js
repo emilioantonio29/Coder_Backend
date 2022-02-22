@@ -9,7 +9,11 @@ import swal from 'sweetalert'
 import { Helmet } from 'react-helmet';
 import cEmpty from './cEmpty.png'
 import axios from "axios";
-
+import Modal from 'react-bootstrap/Modal'
+import ModalDialog from 'react-bootstrap/ModalDialog'
+import ModalTitle from 'react-bootstrap/ModalTitle'
+import ModalBody from 'react-bootstrap/ModalBody'
+import ModalFooter from 'react-bootstrap/ModalFooter'
 
 
 const CartContainerConfirmar = (props) =>{
@@ -32,7 +36,15 @@ const CartContainerConfirmar = (props) =>{
     const [showTable, setShowTable] = React.useState(true);
     const [moneda, setMoneda] = React.useState(true);
     const [totalDolar, setTotalDolar] = React.useState();
- 
+    const [loader, setLoader] = React.useState(true);
+    const [blurEffect, setBlurEffect] = React.useState("blur(0px)");
+    // const [screenDisabled, setScreenDisabled] = React.useState("")
+
+    const [show, setShow] = React.useState(false);
+
+    
+
+
     React.useEffect(()=>{
         if(localStorage.length!=0){
             setShowCart(false)
@@ -77,7 +89,47 @@ const CartContainerConfirmar = (props) =>{
         }
     },[render]);
 
-    async function fireBuy(newOrder) {
+    const fireBuy = async (e) =>{
+        e.preventDefault()
+        setShow(true)
+
+        if(localStorage.length!=0){
+            for(let i =0; i < localStorage.length; i++){
+                let key = JSON.parse(localStorage.getItem(localStorage.key(i)))
+                carritoFire.push({
+                    id: key[0],//idproducto
+                    nombre: key[1],//nombre del producto
+                    precio: key[2], //precio actual del producto
+                    cantidadComprada: key[3], // cantidad comprada por el cliente
+                    categoria: key[5],
+                    stockAfterBuy: key[8] // stock que quedará si se realiza la compra
+                })
+            }
+            let newOrder = {comprador: {nombre: fireName, email: fireMail, telefono: firePhone}, items: carritoFire, total: total, date: new Date()}
+            console.log(newOrder)
+            axios.post('/apiFirebase/compradores', 
+                newOrder
+            ).then((res)=>{
+                {
+                    console.log(res.data)
+                    let id = res.data
+                    comprarok(id.ordenDeCompra)
+                    eliminarTodo()
+                    setDisabled(true)
+                    setCartIcon(false)
+                    setShow(false)
+                    return <Link to="/" />
+                }
+            }).catch((error)=>{
+                console.log(error)
+            })
+
+
+        }
+    }
+
+    /*async function fireBuy(e) {
+
         if(localStorage.length!=0){
             axios.post('/apiFirebase/comprar', 
                   {
@@ -95,30 +147,8 @@ const CartContainerConfirmar = (props) =>{
             }).catch((error)=>{
                 console.log(error)
             })
-
-            /*for(let i =0; i < localStorage.length; i++){
-                const bd = getFirestore();
-                let key = JSON.parse(localStorage.getItem(localStorage.key(i)))
-                carritoFire.push({
-                    id: key[0],//idproducto
-                    nombre: key[1],//nombre del producto
-                    precio: key[2], //precio actual del producto
-                    cantidadComprada: key[3], // cantidad comprada por el cliente
-                    categoria: key[5],
-                    stockAfterBuy: key[8] // stock que quedará si se realiza la compra
-                })
-            }
-            let newOrder = {comprador: {nombre: fireName, email: fireMail, telefono: firePhone}, items: carritoFire, total: total, date: new Date()}
-            const db = getFirestore()
-            const { id } = await db.collection("ordenes").add(newOrder)*/
-            //alert("TU NRO DE ORDEN ES :" + id)
-            // let id = 'IDTEST'
-            // comprarok(id)
-            // eliminarTodo()
-            // setDisabled(true)
-            // setCartIcon(false)
         }
-      }
+      }*/
 
 
 
@@ -214,8 +244,16 @@ const CartContainerConfirmar = (props) =>{
         <Helmet>
             <title>SoyGlucosa | ProyectoCoder</title>
         </Helmet>
-        <button onClick={(()=>console.log(carritoS))}> Console.log</button>
+        {show ? <>
+            <div class="parentDisable"></div>
+            <div style={{padding: "10px", top: "40%", left: "47%",zIndex:999}} className='d-flex justify-content-center position-absolute'>
+                <div  class="spinner-grow text-muted"></div>
+                <div style={{marginLeft: "5px"}} class="spinner-grow text-muted"></div>
+                <div style={{marginLeft: "5px"}} class="spinner-grow text-muted"></div>
+            </div>
+        </> : <></>}
 
+        {/* <button onClick={(()=>console.log(carritoS))}> Console.log</button> */}
         {showCart ? (
             <div className="d-flex flex-column">
             <div className="d-flex justify-content-center" >
@@ -246,7 +284,7 @@ const CartContainerConfirmar = (props) =>{
 
 
         ) : (
-            <div style={{minHeight: props.altura}}>
+            <div style={{minHeight: props.altura, filter: blurEffect}}>
                 <div className="d-flex flex-column">
                 <div className="d-flex justify-content-center" >
                     <div className="col-md-8 d-flex justify-content-left align-items-center noPad">
@@ -520,7 +558,8 @@ const CartContainerConfirmar = (props) =>{
                                 <Link to={`#`}  onMouseOver={e => e.preventDefault()}><button className="disabled " disabled>1</button></Link>
                                 <Link to={`#`}  onMouseOver={e => e.preventDefault()}><button className="disabled " disabled>2</button></Link>
                                 <Link to={`#`}  onMouseOver={e => e.preventDefault()}><button className="disabled activated" disabled>3</button></Link>
-                                <Link to={`/`} ><button className=" comprar" onClick={fireBuy}>COMPRAR</button></Link>
+                                {/* <Link to={`/`} ><button className=" comprar" onClick={fireBuy}>COMPRAR</button></Link> */}
+                                <button className=" comprar" onClick={fireBuy}>COMPRAR</button>
                             </div>
                         </div>
                     </div>
