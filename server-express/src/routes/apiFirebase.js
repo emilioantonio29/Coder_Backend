@@ -17,7 +17,7 @@ const apiFirebase = () =>{
   routerApi.use("/ordenes/graphql", graphqlHTTP({
       schema: buyersSchema,
       rootValue: buyerRoot,
-      graphiql: true
+      graphiql: false
   }))
   
   routerApi.get('/', testerController)

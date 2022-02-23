@@ -43,6 +43,7 @@ import CartContainerDatos from './CartContainerDatos';
       //   setPaso3(true)
       // }
 
+
     React.useEffect(()=>{
 
       verifyUser ? setVerifyUser(false) : setVerifyUser(true)  
