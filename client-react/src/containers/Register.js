@@ -221,7 +221,8 @@ const Register = () =>{
     const registroOk= () =>{
         swal({
             title: `¡Registro realizado con exito!`,
-            text: `Muchas gracias por registrarte en nuestro sitio, ya puedes iniciar sesión y disfrutar de nuestras compras online.`,
+            text: `Muchas gracias por registrarte en nuestro sitio, te enviamos un mail de confirmación a tu casilla.
+            Ya puedes iniciar sesión y disfrutar de nuestras compras online.`,
             icon: "success",
             buttons: {
                 confirm : {text:'Cerrar',className:'msgStyle'}

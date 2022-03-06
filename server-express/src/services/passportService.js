@@ -1,7 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const {getUserDbMongo, createUserDbMongo} = require("../daos/dao/mongoDb")
-
+const {mailBienvenida} = require("../mailing/mailingSender")
 
 passport.serializeUser(function (user, done) {
     console.log("PASSPORT: SerializeUser")
@@ -60,7 +60,8 @@ passport.use('register', new LocalStrategy({ passReqToCallback: true }, (req, us
                   tyc: user.tyc,
                   fecha: user.fecha, 
                 }, 
-                {message: "success"})
+                {message: "success"},
+                mailBienvenida(user))
               })
               .catch((err)=>{console.log(err)}) 
           }
