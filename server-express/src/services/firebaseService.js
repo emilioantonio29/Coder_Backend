@@ -1,6 +1,6 @@
 const { json } = require("body-parser")
 const {getProductsFirebase, getBuyersFirebase, addBuyerFirebase, updateOneFirebaseProduct} = require("../daos/dao/firebaseDb")
-
+const{mailCompra} = require("../mailing/mailingSender")
 
 
 const testerService = async () =>{
@@ -25,6 +25,7 @@ const purchaseService = async () =>{
 
 const addBuyerService = async (comprador) =>{
     let data = await addBuyerFirebase(comprador)
+    mailCompra(comprador, data._path.segments[1])
     return data;
 }
 
