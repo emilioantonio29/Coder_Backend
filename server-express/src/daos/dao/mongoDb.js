@@ -14,7 +14,7 @@ const getUserDbMongo = async (username) =>{
         console.log(err)
     })
     .finally(() => {
-        mongoConnectionNoSingleton.mongoDisconnect().catch(err => { throw new Error('error al desconectar la base de datos') })
+        //mongoConnectionNoSingleton.mongoDisconnect().catch(err => { throw new Error('error al desconectar la base de datos') })
     })
 
     return data

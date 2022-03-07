@@ -1,4 +1,5 @@
-const {getProductsFirebase, getBuyersFirebase, addBuyerFirebase} = require("../daos/dao/firebaseDb")
+const { json } = require("body-parser")
+const {getProductsFirebase, getBuyersFirebase, addBuyerFirebase, updateOneFirebaseProduct} = require("../daos/dao/firebaseDb")
 
 
 
@@ -27,6 +28,16 @@ const addBuyerService = async (comprador) =>{
     return data;
 }
 
+const updateOneProductService = async (updObj) => {
+    if(updObj.id && updObj.cantidad){
+        let data = await updateOneFirebaseProduct(updObj.id, updObj.cantidad)
+        return data;
+    }else{
+        return {message: "error al actualizar producto, por favor envia el formato correcto",
+                    formato: {id: "21qS0AUU1VZm8UHE8OLz", cantidad: 20}}
+    }
+}
+
 
 
 module.exports = {
@@ -34,5 +45,6 @@ module.exports = {
     testerService,
     purchaseService,
     buyersListService,
-    addBuyerService
+    addBuyerService,
+    updateOneProductService
 }

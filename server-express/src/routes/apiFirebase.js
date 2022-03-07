@@ -3,7 +3,8 @@ const { getProductsController,
         testerController, 
         purchaseController, 
         buyersListController,
-        addBuyerController } = require("../controllers/firebaseController") 
+        addBuyerController,
+        updateProductController } = require("../controllers/firebaseController") 
 const { buyersSchema, buyerRoot } = require("./graphQL/firebaseSchema")
 const { graphqlHTTP} = require("express-graphql") 
 
@@ -29,6 +30,8 @@ const apiFirebase = () =>{
   routerApi.get('/ordenes', buyersListController)
 
   routerApi.post('/compradores', addBuyerController)
+
+  routerApi.post('/productos', updateProductController)
 
   return routerApi;
 }
