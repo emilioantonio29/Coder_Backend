@@ -1,7 +1,12 @@
 const { json } = require("body-parser")
-const {getProductsFirebase, getBuyersFirebase, addBuyerFirebase, updateOneFirebaseProduct} = require("../daos/dao/firebaseDb")
+const {getProductsFirebase, getBuyersFirebase, addBuyerFirebase, updateOneFirebaseProduct, updateFirebase20} = require("../daos/dao/firebaseDb")
 const{mailCompra} = require("../mailing/mailingSender")
 
+
+const update20Service = async () =>{
+    let data = await updateFirebase20();
+    return data
+}
 
 const testerService = async () =>{
     let data = await {hi:"testing controller ok"}
@@ -47,5 +52,6 @@ module.exports = {
     purchaseService,
     buyersListService,
     addBuyerService,
-    updateOneProductService
+    updateOneProductService,
+    update20Service
 }

@@ -32,6 +32,25 @@ const updateFirebase = async (objComprador) =>{
   //console.log(objComprador.items)
 }
 
+const updateFirebase20 = async () =>{
+
+
+  try {
+    let products = await getProductsFirebase()
+    //console.log(products)
+
+    for(let i =0; i<products.length; i++){
+      const doc = await firestoreConnection.collection('producto').doc(products[i].producto.id);
+      doc.update({cantidad: 20})
+    }
+    return "registros actualizados con exito"
+  } catch (error) {
+    return "ocurrio un error al actualizar los productos"
+  }
+
+  //console.log(objComprador.items)
+}
+
 const updateOneFirebaseProduct = async (id, cant) =>{
   try {
     const doc = await firestoreConnection.collection('producto').doc(id);
@@ -51,7 +70,7 @@ const addBuyerFirebase = async (comprador) =>{
 }
 
 module.exports = {
-    getProductsFirebase, getBuyersFirebase, addBuyerFirebase, updateOneFirebaseProduct
+    getProductsFirebase, getBuyersFirebase, addBuyerFirebase, updateOneFirebaseProduct, updateFirebase20
 }
 
 

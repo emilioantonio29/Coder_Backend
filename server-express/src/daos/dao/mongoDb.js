@@ -20,6 +20,22 @@ const getUserDbMongo = async (username) =>{
     return data
 }
 
+const passwordRecoveryDbMongo = async (username) =>{
+    let data = await mongoConnectionNoSingleton.mongoConnection()
+    .then(() => {
+        let user = ""
+        return user = userMongoaaS.findOne({username: username})
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+    .finally(() => {
+        mongoConnectionNoSingleton.mongoDisconnect().catch(err => { throw new Error('error al desconectar la base de datos') })
+    })
+
+    return data
+}
+
 // NO SE VALIDA SI EL USUARIO YA ESTA CREADO: ESTO SE VALIDA EN LA CAPA DE SERVICIO
 const createUserDbMongo = async (userObj) => {
     let data = await mongoConnectionNoSingleton.mongoConnection()
@@ -39,5 +55,6 @@ const createUserDbMongo = async (userObj) => {
 
 module.exports= {
     getUserDbMongo,
-    createUserDbMongo
+    createUserDbMongo,
+    passwordRecoveryDbMongo
 }

@@ -22,12 +22,12 @@ Se implementó el patron DAOS en la capa de persistencia.
                  |   |____| <- |____| <- |____| <- |  |___| |___| |  |
                  |                                 |______________|  |
                  |   routes  controller  service          DAO        |
-                 -----------------------------------------------------
-                                        ↓   ↑
-                              --------------------------
-                              |                        |
-                              |       TEST LAYER       |
-                              |________________________|
+                 ---------------------------↑-------------------------
+                            ↓       ↑       |_________
+                    --------------------------        ↓         
+                    |                        |     ---------
+                    |       TEST LAYER       |     |mailing|
+                    |________________________|     |_______|
 
 
 Se implementará una nueva capa de TEST: npm run test, prueba la ruta de traer los productos y las conexiones a las bases de datos.

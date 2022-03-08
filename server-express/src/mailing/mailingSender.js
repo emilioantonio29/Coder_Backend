@@ -57,7 +57,7 @@ const mailCompra = async (compra, ordenDeCompra) => {
         from: 'SoyGlucosa Project',
         to: `${compra.comprador.email}`,
         subject: 'Portal SoyGlucosa: ¡Muchas gracias por tu compra!',
-        html: `${purchase1} ¡Gracias por tu compra ${compra.comprador.nombre}! <h3>Detalle de la compra:</h3> ${ordenDeC} ${purchase2} ${detail} ${totalV} ${purchase3}`
+        html: `${purchase1} ¡Gracias por tu compra ${compra.comprador.nombre}! ${purchase2} <h3>Detalle de la compra:</h3> ${ordenDeC} ${detail} ${totalV} ${purchase3}`
     }
 
     

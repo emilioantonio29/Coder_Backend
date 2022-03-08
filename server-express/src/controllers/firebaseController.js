@@ -3,8 +3,14 @@ const { getProductsService,
         purchaseService, 
         buyersListService,
         addBuyerService,
-        updateOneProductService} = require("../services/firebaseService") 
+        updateOneProductService,
+        update20Service} = require("../services/firebaseService") 
 
+
+const update20Controller = async (req, res) =>{
+    const data =  await update20Service()
+    res.json(data)
+}
 
 const testerController = async (req, res) =>{
     const data =  await testerService()
@@ -48,5 +54,6 @@ module.exports = {
     purchaseController,
     buyersListController,
     addBuyerController,
-    updateProductController
+    updateProductController,
+    update20Controller
 }

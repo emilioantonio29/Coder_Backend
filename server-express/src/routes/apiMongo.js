@@ -28,6 +28,8 @@ const apiMongo = () =>{
 
   routerApiMongo.get("/user", RutasMongoPassport.user);
 
+  routerApiMongo.post("/recovery", RutasMongoPassport.passwordRecovery);
+
   return routerApiMongo;
 }
 

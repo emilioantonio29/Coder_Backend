@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 // const bcrypt = require("bcryptjs");
 const passport = require('passport')
+const {passwordRecoveryService} = require("../services/mongoService")
 require("../services/passportService")
 
 // COOKIE EXPIRE : 1 minuto = 60000
@@ -56,6 +57,17 @@ class RutasMongoPassport{
 
   static registerFailure = (req, res) =>{
     res.json(req.user)
+  }
+
+  static passwordRecovery = async (req, res) =>{
+    
+    if(req.body.username){
+      let data = await passwordRecoveryService(req.body.username);
+      let password = data.password
+      res.json(password)
+    }else{
+      res.json({message:"error: por favor envia el formato esperado",formatExample: {username: "educacionit6464@gmail.com"}})
+    }
   }
 
   static user = (req, res) => {
