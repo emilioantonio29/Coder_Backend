@@ -74,3 +74,20 @@ img{
   width: 130px;
   /* border: 1px solid red; */
 }
+
+
+/* 
+body{
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 25vh;
+}
+
+footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-height: 5vh;
+
+} */
+

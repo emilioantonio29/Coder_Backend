@@ -1012,3 +1012,7 @@ li a:hover:not(.active) {
     height: 100% !important;
     width: 100% !important;
 }
+
+.RecoveryMail:hover{
+  color:#cc9a6b !important
+}

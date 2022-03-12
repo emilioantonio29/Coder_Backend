@@ -7,7 +7,7 @@ const FooterComponent = () => {
 
     return(
       <>
-
+        <footer>
         <div className="intro"></div>
         <div className="footerC d-flex justify-content-center" style={{paddingTop:"30px"}}>
             <div className="center colorBrown2 col-md-8">
@@ -48,9 +48,7 @@ const FooterComponent = () => {
                                         className="fa fa-envelope-o colorIcon"></i></a> comingSoon@example.com</p>
                         </div>
                         <div className="col-md-4 d-flex justify-content-center">
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Reprehenderit culpa cumque facilis
-                                nulla, eum accusamus magni animi doloremque alias distinctio molestiae quaerat vero libero
-                                aliquid, nostrum commodi quia cupiditate sapiente.</p>
+                            <p>Lorem ipsum.</p>
                         </div>
                     </div>
                 </div>
@@ -79,6 +77,7 @@ const FooterComponent = () => {
                 </div>
             </div>
         </div>
+        </footer>
       </>
     )
   

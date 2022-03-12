@@ -26,6 +26,7 @@ import LoggedIn from './containers/LoggedIn';
 import Register from './containers/Register';
 import Welcome from './components/navbar/Welcome';
 import NotLoggedIn from './containers/NotLoggedIn';
+import RecoveryMail from './containers/RecoveryMail';
 
 
 
@@ -76,6 +77,7 @@ const App = () =>{
                 <Route path='/carrito/paso-3' exact={true} element={<CartContainerConfirmar/>} /> */}
                 <Route path="/testcomponent" element={<TestComponent/>}/>
                 <Route path="/registro" element={<Register/>}/>
+                <Route path="/recupero-de-contrasena" element={<RecoveryMail/>}/>
                 <Route path='/inicio-de-sesion' element={userLoggedIn.nombre === undefined ? <NotLoggedIn/> : <LoggedIn/>} />
                 {/* <Route path="/inicio-de-sesion" element={<LoggedIn/>}/>
                 <Route path="/inicio-de-sesionNO" element={<NotLoggedIn/>}/> */}

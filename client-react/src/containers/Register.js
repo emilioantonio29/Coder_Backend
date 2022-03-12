@@ -115,12 +115,20 @@ const Register = () =>{
         setTYCS("") 
     }
 
-    const handleSubmit = (e) => {
+    function validateEmail(elementValue){      
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        return emailPattern.test(elementValue); 
+      } 
+
+    const handleSubmit = async (e) => {
         e.preventDefault()
         //console.log(nombre + " " + apellido + username + " " + password + " " + password2 + " " + provincia
         //+ " " + localidad+ " " + calle+ " " + altura+ " " + zip+ " " + telefono+" "+tyc);
         // ... submit to API or something
-        if(nombre &&  apellido &&  username &&  password &&  password2 &&  provincia
+
+        let validMail =  await validateEmail(username)
+
+        if(validMail && nombre &&  apellido &&  username &&  password &&  password2 &&  provincia
             &&  localidad &&   calle &&  altura &&  zip &&  telefono &&  document.getElementById('gridCheck').checked){
             if(password !== password2){
                 e.preventDefault()
@@ -166,6 +174,7 @@ const Register = () =>{
                   .catch(function (error) {
                     setLoader(false)
                     registroError()
+                    setBotonDisabled("")
                     console.log(error);
                   })
                   .finally(()=>{
@@ -186,7 +195,7 @@ const Register = () =>{
         }else{
             nombre ? setNombreS("") : setNombreS("*")
             apellido ? setApellidoS("") : setApellidoS("*")
-            username ? setUsernameS("") : setUsernameS("*")
+            username && validMail ? setUsernameS("") : setUsernameS("* introduce un mail valido")
             password ? setPasswordS("") : setPasswordS("*")
             password2 ? setPassword2S("") : setPassword2S("*")
             provincia ? setProvinciaS("") : setProvinciaS("*")

@@ -7,7 +7,7 @@ import axios from "axios";
 import swal from 'sweetalert'
 
 
-const NotLoggedIn = () =>{
+const RecoveryMail = () =>{
     const {load2, setLoad2, userLoggedIn, setUserLoggedIn, verifyUser, setVerifyUser} = React.useContext(UserGlobalContext);
  
 
@@ -18,7 +18,6 @@ const NotLoggedIn = () =>{
     const [render, setRender] = React.useState(1)
     
     const [usernameS, setUsernameS] = React.useState("");
-    const [usernameS2, setUsernameS2] = React.useState("");
     const [passwordS, setPasswordS] = React.useState("");
     const [tycS, setTYCS] = React.useState(false);
 
@@ -36,7 +35,7 @@ const NotLoggedIn = () =>{
 
     const cleanAll = () =>{
 
-        setUsernameS2("")
+        
         setUsername("") 
         setPassword("") 
 
@@ -47,53 +46,41 @@ const NotLoggedIn = () =>{
         setPasswordS("") 
 
     }
+
     function validateEmail(elementValue){      
         var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
         return emailPattern.test(elementValue); 
       } 
 
-    const handleSubmit = async (e) => {
-                e.preventDefault()
-                let validMail = await validateEmail(username)
-                if(username && validMail && password){
-                    cleanAll()
-                        setLoader(true);
-                        const fecha = new Date()
-                        axios.post('/apiMongo/login', 
-                        {
-
-                            username: username,
-                            password: password,
-
-                        }
-                        )
-                        .then(function (response) {
-                            console.log(response)
-                            setLoader(false)
-                            return response.data
-                        })
-                        .then((data)=>{
-                            if(data !== ""){
-                                // cleanAll();
-                                setUserLoggedIn(data)
-                                registroOk();
-                            }else if(data === ""){
-                                registroFail();
-                            }
-                        })
-                        .catch(function (error) {
-                            setLoader(false)
-                            registroError()
-                            setBotonDisabled("")
-                            console.log(error);
-                        });
-
-                }else{
-                    username && validMail ? setUsernameS("") : setUsernameS("* introduce un mail valido")
-                    password ? setPasswordS("") : setPasswordS("*")
+      const handleSubmit = async (e) => {
+        e.preventDefault()
+        let validMail = await validateEmail(username)
+        if(username && validMail){
+            cleanAll()
+                setLoader(true);
+                const fecha = new Date()
+                axios.post('/apiMongo/recovery', 
+                {
+                    username: username,
                 }
+                )
+                .then((response)=>{
+                    console.log(response.data)
+                    setLoader(false)
+                    registroOk()
+                })
+                .catch(function (error) {
+                    setLoader(false)
+                    registroError()
+                    setBotonDisabled("")
+                    console.log(error);
+                });
 
-      };
+        }else{
+            username && validMail ? setUsernameS("") : setUsernameS("* introduce un mail valido")
+        }
+
+};
     
     const consoles = () =>{
         // if(tyc){
@@ -105,7 +92,7 @@ const NotLoggedIn = () =>{
     }
     
     const checkForm = () =>{
-        if(username &&  password){
+        if(username){
             setBotonDisabled("")
         }else{
             setBotonDisabled("disabled")
@@ -113,8 +100,8 @@ const NotLoggedIn = () =>{
     }
     const registroOk= () =>{
         swal({
-            title: `¡Inicio de sesion exitoso!`,
-            text: `lorem Ipsum.`,
+            title: `¡Muchas gracias!`,
+            text: `Si el mail indicado se encuentra registrado, le enviamos un mail de recupero de contraseña.`,
             icon: "success",
             buttons: {
                 confirm : {text:'Cerrar',className:'msgStyle'}
@@ -138,7 +125,7 @@ const NotLoggedIn = () =>{
     const registroError= () =>{
         swal({
             title: `¡Opps!`,
-            text: `Detectamos un error en el proceso de login, por favor intenta nuevamente unos minutos.`,
+            text: `Detectamos un error. Por favor intenta nuevamente en unos minutos.`,
             icon: "error",
             buttons: {
                 confirm : {text:'Cerrar',className:'msgStyle'}
@@ -189,7 +176,13 @@ const NotLoggedIn = () =>{
                             </Link>
                         </p>
                         <p><i className="fa fa-angle-right"></i></p>
-                        <p style={{paddingLeft:"10px"}}> Inicio de sesión</p>
+                        <p >
+                            <Link to={`/inicio-de-sesion`}>
+                                <button className="btn">Inicio de sesion</button>
+                            </Link>
+                        </p>
+                        <p><i className="fa fa-angle-right"></i></p>
+                        <p style={{paddingLeft:"10px"}}> Recupero de contraseña</p>
                     </div>
                 </div>
                 <br/>
@@ -199,25 +192,14 @@ const NotLoggedIn = () =>{
                     <form className='col-md-4' autocomplete="off" id='myform'>
                         <br/>
                         <div className="form-group">
-                            <label for="email">Email <strong style={{color: "#d67ad6"}}>{usernameS}</strong> {usernameS2}</label>
+                            <label for="email">Email <strong style={{color: "#d67ad6"}}>{usernameS}</strong></label>
                             <input value={username} onChange={usernameF} required type="email" className="form-control" id="email" placeholder="emilio@test.com"/>
-                        </div>
-                        <div className="form-group">
-                            <label for="inputPassword1">Contraseña <strong style={{color: "#d67ad6"}}>{passwordS}</strong></label>
-                            <input value={password} onChange={passwordF} required type="password" className="form-control" id="inputPassword1" placeholder="********"/>
                         </div>
                         <br/>
 
 
                         {/* <button enabled  onClick={handleSubmit} type="submit" className="botonNow botonNow6 btnNoStyle">Completar Registro</button> */}
-                        <input disabled={botonDisabled} onClick={handleSubmit} type="submit" className="botonNow botonNow6 btnNoStyle" value="Iniciar sesion"></input> 
-                        <div className="d-flex " >
-                            <div className='col-md-12'>
-                                <div className=''>
-                                    <Link className='RecoveryMail'  to={`/recupero-de-contrasena`} style={{color: "#d67ad6", marginLeft: "-12px"}}>* Recuperar contraseña</Link>
-                                </div>
-                            </div>
-                        </div>
+                        <input disabled={botonDisabled} onClick={handleSubmit} type="submit" className="botonNow botonNow6 btnNoStyle" value="Recuperar contraseña"></input> 
                         {loader ? (
                             <div style={{padding: "10px"}} className='d-flex justify-content-center'>
                                 <div  class="spinner-grow text-muted"></div>
@@ -237,18 +219,7 @@ const NotLoggedIn = () =>{
                 <br></br>
                 <br></br>
                 <br></br>
-                <div className="d-flex justify-content-center" >
-                    <div className='col-md-4'>
-                        <div className=''>
-                            <Link to={`/registro`}>
-                                <button className="  btnNoStyle">Registro</button>
-                            </Link>
-                        </div>
-                        <div>
-                            <p style={{color: "#d67ad6"}}>* Te invitamos a registrarte:</p>
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
 
@@ -257,4 +228,4 @@ const NotLoggedIn = () =>{
 
 }
 
-export default NotLoggedIn;
+export default RecoveryMail;

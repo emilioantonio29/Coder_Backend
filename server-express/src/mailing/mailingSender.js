@@ -1,6 +1,7 @@
 const nodemailer = require("nodemailer")
 const {template1, template2} = require("./templates/welcome")
 const {purchase1, purchase2, purchase3} = require("./templates/purchase")
+const {recovery1, recovery2} = require("./templates/revoveryMail")
 
 
 const transporter = nodemailer.createTransport({
@@ -11,6 +12,26 @@ const transporter = nodemailer.createTransport({
         pass: 'nvwkjmsjsikuxjpr'
     }
 });
+
+const mailRecoveryPassword = (user) =>{
+    const mailOptions = {
+        from: 'SoyGlucosa Project',
+        to: `${user.username}`,
+        subject: 'Portal SoyGlucosa: Recupero de contraseña',
+        html: `${recovery1} ${user.nombre} solicitaste un recupero de contraseña. Tu contraseña es: ${user.password} ${recovery2}`
+    }
+
+    transporter.sendMail(mailOptions)
+        .then((data)=>{
+            console.log(data)
+            // res.status(200).json(data);
+            // return 200;
+        }).catch((err)=>{
+            // res.status(500).send(err.message)
+            console.log(err.message)
+            // return 500;
+        })
+}
 
 
 
@@ -74,4 +95,4 @@ const mailCompra = async (compra, ordenDeCompra) => {
 }
 
 
-module.exports = {mailBienvenida, mailCompra}
+module.exports = {mailBienvenida, mailCompra, mailRecoveryPassword}

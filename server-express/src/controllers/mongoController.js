@@ -63,8 +63,15 @@ class RutasMongoPassport{
     
     if(req.body.username){
       let data = await passwordRecoveryService(req.body.username);
-      let password = data.password
-      res.json(password)
+      let password;
+      // console.log(data)
+      if(data == null){
+        password = {warning: "user not found"}
+        res.json(password)
+      }else{
+        password = data.password
+        res.json(password)
+      }
     }else{
       res.json({message:"error: por favor envia el formato esperado",formatExample: {username: "educacionit6464@gmail.com"}})
     }
