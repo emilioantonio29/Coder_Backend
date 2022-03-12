@@ -32,9 +32,9 @@ const apiFirebase = () =>{
 
   routerApi.post('/compradores', addBuyerController)
 
-  routerApi.post('/productos', updateProductController)
+  routerApi.put('/productos', updateProductController)
 
-  routerApi.post('/actualizar20', update20Controller)
+  routerApi.put('/actualizar20', update20Controller)
 
   return routerApi;
 }
